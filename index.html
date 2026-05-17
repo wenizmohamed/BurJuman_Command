@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BurJuman Command Center · Story Mode</title>
+    <meta
+      name="description"
+      content="BurJuman Command Center — institutional intelligence dashboard for Mawarid Holding. Built by AIHUBZ."
+    />
+
+    <!-- Google Fonts: Jost (wordmark), Inter (UI), Fraunces (narrator), JetBrains Mono (mono) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Brand canon tokens -->
+    <link rel="stylesheet" href="./colors_and_type.css" />
+
+    <style>
+      /* ---------- Page-specific dark canon styles ---------- */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+      }
+
+      body {
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        padding-bottom: 96px; /* room for AIHUBZ pill */
+      }
+
+      /* ---------- Brand bar ---------- */
+      .bj-brand-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 32px;
+      }
+
+      .bj-brand-bar__left,
+      .bj-brand-bar__right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .bj-wordmark {
+        font-size: 1.125rem;
+      }
+
+      .bj-brand-bar__meta {
+        font-family: var(--bj-font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .bj-brand-bar__sep {
+        color: rgba(255, 255, 255, 0.55);
+        margin: 0 10px;
+      }
+
+      .bj-brand-bar__avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.35);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--bj-font-ui);
+        font-weight: 500;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+      }
+
+      /* ---------- Narrator strip ---------- */
+      .bj-narrator-strip {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 0 32px;
+      }
+
+      .bj-narrator-strip__text {
+        font-size: 1.0625rem;
+        line-height: 1.4;
+        color: var(--bj-color-text);
+      }
+
+      .bj-narrator-strip__text::before {
+        content: "“";
+        margin-right: 2px;
+        opacity: 0.55;
+      }
+      .bj-narrator-strip__text::after {
+        content: "”";
+        margin-left: 2px;
+        opacity: 0.55;
+      }
+
+      .bj-narrator-strip__controls {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+      }
+
+      .bj-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: var(--bj-radius-pill);
+        background: transparent;
+        color: var(--bj-color-text-muted);
+        border: 0.75pt solid var(--bj-color-divider);
+        font-family: var(--bj-font-ui);
+        font-size: 12px;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        transition: border-color var(--bj-duration-control)
+            var(--bj-easing-standard),
+          color var(--bj-duration-control) var(--bj-easing-standard);
+      }
+
+      .bj-pill:hover {
+        color: var(--bj-color-text);
+        border-color: #34343c;
+      }
+
+      .bj-pill .lucide {
+        width: 14px;
+        height: 14px;
+      }
+
+      .bj-mode-toggle {
+        display: inline-flex;
+        padding: 3px;
+        border-radius: var(--bj-radius-pill);
+        border: 0.75pt solid var(--bj-color-divider);
+        background: transparent;
+      }
+
+      .bj-mode-toggle button {
+        appearance: none;
+        background: transparent;
+        border: 0;
+        color: var(--bj-color-text-muted);
+        font-family: var(--bj-font-ui);
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        padding: 5px 12px;
+        border-radius: var(--bj-radius-pill);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: color var(--bj-duration-control) var(--bj-easing-standard),
+          background var(--bj-duration-control) var(--bj-easing-standard);
+      }
+
+      .bj-mode-toggle button .lucide {
+        width: 14px;
+        height: 14px;
+      }
+
+      .bj-mode-toggle button[aria-pressed="true"] {
+        color: var(--bj-color-text);
+        background: rgba(255, 255, 255, 0.04);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+      }
+
+      /* ---------- Main layout ---------- */
+      main {
+        padding: 32px;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .bj-eyebrow {
+        font-family: var(--bj-font-ui);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--bj-color-text-muted);
+      }
+
+      .bj-section-header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin: 40px 0 16px;
+      }
+      .bj-section-header:first-of-type {
+        margin-top: 0;
+      }
+
+      .bj-section-header__meta {
+        font-family: var(--bj-font-mono);
+        font-size: 11px;
+        color: var(--bj-color-text-muted);
+        letter-spacing: 0.04em;
+      }
+
+      /* ---------- KPI grid (hero + 3 satellites) ---------- */
+      .bj-kpi-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 20px;
+      }
+
+      @media (max-width: 1100px) {
+        .bj-kpi-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .bj-kpi-grid .bj-card--hero {
+          grid-column: 1 / -1;
+        }
+      }
+      @media (max-width: 640px) {
+        .bj-kpi-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .bj-card {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .bj-card--hero {
+        padding: 32px;
+        border-radius: var(--bj-radius-hero);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .bj-card--hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          var(--bj-color-accent-coral),
+          var(--bj-color-accent-magenta),
+          var(--bj-color-accent-purple)
+        );
+        opacity: 0.7;
+      }
+
+      .bj-kpi__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .bj-kpi__title {
+        font-family: var(--bj-font-ui);
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--bj-color-text);
+        letter-spacing: 0.01em;
+      }
+
+      .bj-kpi__icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--bj-color-text-muted);
+      }
+
+      .bj-kpi__icon .lucide {
+        width: 18px;
+        height: 18px;
+      }
+
+      .bj-kpi__value {
+        font-family: var(--bj-font-ui);
+        font-weight: 500;
+        font-size: 36px;
+        letter-spacing: -0.01em;
+        line-height: 1.05;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .bj-card--hero .bj-kpi__value {
+        font-size: 72px;
+        letter-spacing: -0.02em;
+        line-height: 1;
+      }
+
+      .bj-kpi__unit {
+        font-size: 0.5em;
+        color: var(--bj-color-text-muted);
+        margin-right: 6px;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+      }
+
+      .bj-kpi__row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .bj-delta {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px 10px;
+        border-radius: var(--bj-radius-pill);
+        font-family: var(--bj-font-mono);
+        font-size: 12px;
+        letter-spacing: 0.02em;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .bj-delta--up {
+        background: rgba(48, 209, 88, 0.1);
+        color: #5fd97a;
+      }
+
+      .bj-delta--down {
+        background: rgba(255, 69, 95, 0.1);
+        color: #ff7a8a;
+      }
+
+      .bj-delta--neutral {
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--bj-color-text-muted);
+      }
+
+      .bj-kpi__meta {
+        font-family: var(--bj-font-mono);
+        font-size: 11px;
+        color: var(--bj-color-text-muted);
+        letter-spacing: 0.04em;
+      }
+
+      .bj-spark {
+        width: 100%;
+        height: 48px;
+        display: block;
+      }
+
+      .bj-card--hero .bj-spark {
+        height: 72px;
+      }
+
+      /* ---------- Driver cards ---------- */
+      .bj-driver-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      @media (max-width: 960px) {
+        .bj-driver-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .bj-driver__head {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .bj-driver__title {
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+      }
+
+      .bj-driver__body {
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--bj-color-text);
+      }
+
+      .bj-driver__stats {
+        display: flex;
+        gap: 24px;
+        padding-top: 12px;
+        border-top: 0.75pt solid var(--bj-color-divider);
+      }
+
+      .bj-driver__stat-label {
+        display: block;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--bj-color-text-muted);
+        margin-bottom: 4px;
+      }
+
+      .bj-driver__stat-value {
+        font-family: var(--bj-font-ui);
+        font-size: 18px;
+        font-weight: 500;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ---------- Next Best Action ---------- */
+      .bj-nba {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 32px;
+        align-items: center;
+        padding: 28px 32px;
+      }
+
+      @media (max-width: 720px) {
+        .bj-nba {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .bj-nba__title {
+        font-size: 20px;
+        font-weight: 500;
+        letter-spacing: -0.005em;
+        margin: 8px 0 8px;
+      }
+
+      .bj-nba__body {
+        font-size: 14px;
+        line-height: 1.55;
+        color: var(--bj-color-text);
+        max-width: 64ch;
+      }
+
+      .bj-nba__meta {
+        display: flex;
+        gap: 20px;
+        margin-top: 14px;
+        font-family: var(--bj-font-mono);
+        font-size: 11px;
+        color: var(--bj-color-text-muted);
+        letter-spacing: 0.04em;
+      }
+
+      .bj-nba__actions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .bj-btn {
+        appearance: none;
+        border: 0;
+        font-family: var(--bj-font-ui);
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        padding: 12px 18px;
+        border-radius: var(--bj-radius-pill);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: opacity var(--bj-duration-control)
+            var(--bj-easing-standard),
+          background var(--bj-duration-control) var(--bj-easing-standard),
+          box-shadow var(--bj-duration-control) var(--bj-easing-standard);
+      }
+
+      .bj-btn .lucide {
+        width: 16px;
+        height: 16px;
+      }
+
+      .bj-btn--primary {
+        background: #e5294a;
+        color: #fff;
+        box-shadow: 0 8px 24px rgba(229, 41, 74, 0.25);
+      }
+
+      .bj-btn--primary:hover {
+        opacity: 0.92;
+        box-shadow: 0 8px 24px rgba(229, 41, 74, 0.25),
+          inset 0 0 0 1px var(--bj-color-accent-coral);
+      }
+
+      .bj-btn--ghost {
+        background: transparent;
+        color: var(--bj-color-text-muted);
+        box-shadow: inset 0 0 0 1px var(--bj-color-divider);
+      }
+
+      .bj-btn--ghost:hover {
+        color: var(--bj-color-text);
+        box-shadow: inset 0 0 0 1px #34343c;
+      }
+
+      /* ---------- Footer ---------- */
+      .bj-footer {
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 32px;
+        border-top: 0.75pt solid var(--bj-color-divider);
+        font-family: var(--bj-font-mono);
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        color: var(--bj-color-text-muted);
+        text-transform: uppercase;
+      }
+
+      .bj-footer__left,
+      .bj-footer__right {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .bj-live {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .bj-live__dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: #5fd97a;
+        box-shadow: 0 0 0 0 rgba(95, 217, 122, 0.5);
+        animation: bj-pulse 2s var(--bj-easing-standard) infinite;
+      }
+
+      @keyframes bj-pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(95, 217, 122, 0.55);
+        }
+        70% {
+          box-shadow: 0 0 0 8px rgba(95, 217, 122, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(95, 217, 122, 0);
+        }
+      }
+
+      .bj-icon-btn {
+        appearance: none;
+        border: 0;
+        background: transparent;
+        color: var(--bj-color-text-muted);
+        cursor: pointer;
+        padding: 6px;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--bj-font-mono);
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        transition: color var(--bj-duration-control) var(--bj-easing-standard);
+      }
+
+      .bj-icon-btn:hover {
+        color: var(--bj-color-text);
+      }
+
+      .bj-icon-btn .lucide {
+        width: 14px;
+        height: 14px;
+      }
+
+      /* ---------- AIHUBZ delivery pill ---------- */
+      .bj-built-by-pill {
+        font-family: var(--bj-font-ui);
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        font-size: 11px;
+        padding: 8px 14px;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Brand bar (h=80, gradient ribbon — coral → magenta → purple) -->
+    <header class="bj-brand-bar" role="banner">
+      <div class="bj-brand-bar__left">
+        <span class="bj-wordmark">BURJUMAN</span>
+      </div>
+      <div class="bj-brand-bar__right">
+        <span class="bj-brand-bar__meta">
+          Story Mode
+          <span class="bj-brand-bar__sep">·</span>
+          <span id="bj-date">16 May 2026</span>
+        </span>
+        <span class="bj-brand-bar__avatar" aria-label="Operator">MA</span>
+      </div>
+    </header>
+
+    <!-- Narrator strip (h=64, Fraunces italic — AI voice only) -->
+    <section class="bj-narrator-strip" aria-label="AI Narrator">
+      <p class="bj-narrator-strip__text">
+        Saturday traffic is tracking 11% above plan; the Saks evening window is
+        doing most of the work — consider holding off on a discount push.
+      </p>
+      <div class="bj-narrator-strip__controls">
+        <button type="button" class="bj-pill" aria-label="Why this insight">
+          <i data-lucide="help-circle" class="lucide"></i> Why?
+        </button>
+        <div
+          class="bj-mode-toggle"
+          role="group"
+          aria-label="Dashboard mode toggle"
+        >
+          <button type="button" aria-pressed="true">
+            <i data-lucide="layout" class="lucide"></i> Story
+          </button>
+          <button type="button" aria-pressed="false">
+            <i data-lucide="grid-3x3" class="lucide"></i> Explore
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <!-- KPI BAND -->
+      <div class="bj-section-header">
+        <span class="bj-eyebrow">Today · Mall Performance</span>
+        <span class="bj-section-header__meta">Window 10:00–17:30 GST</span>
+      </div>
+
+      <section class="bj-kpi-grid" aria-label="Mall performance KPIs">
+        <!-- HERO TILE: Footfall -->
+        <article class="bj-card bj-card--hero">
+          <div class="bj-kpi__head">
+            <div>
+              <div class="bj-eyebrow" style="margin-bottom: 6px">
+                Footfall · Today
+              </div>
+              <div class="bj-kpi__title">Total visitors across all zones</div>
+            </div>
+            <span class="bj-kpi__icon"
+              ><i data-lucide="footprints" class="lucide"></i
+            ></span>
+          </div>
+          <div class="bj-kpi__value">48,210</div>
+          <div class="bj-kpi__row">
+            <span class="bj-delta bj-delta--up">+8.4% WoW</span>
+            <span class="bj-delta bj-delta--up">+11.2% vs plan</span>
+            <span class="bj-kpi__meta">Peak 14:00 · 6,420 ft/hr</span>
+          </div>
+          <svg
+            class="bj-spark"
+            viewBox="0 0 600 72"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="bj-hero-grad" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%" stop-color="#FF6B47" />
+                <stop offset="52%" stop-color="#C7256D" />
+                <stop offset="100%" stop-color="#8B2D8E" />
+              </linearGradient>
+              <linearGradient id="bj-hero-fill" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#C7256D" stop-opacity="0.35" />
+                <stop offset="100%" stop-color="#C7256D" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M0,58 L40,52 L80,48 L120,44 L160,38 L200,40 L240,32 L280,28 L320,30 L360,22 L400,18 L440,24 L480,14 L520,10 L560,16 L600,8 L600,72 L0,72 Z"
+              fill="url(#bj-hero-fill)"
+            />
+            <path
+              d="M0,58 L40,52 L80,48 L120,44 L160,38 L200,40 L240,32 L280,28 L320,30 L360,22 L400,18 L440,24 L480,14 L520,10 L560,16 L600,8"
+              fill="none"
+              stroke="url(#bj-hero-grad)"
+              stroke-width="2"
+            />
+          </svg>
+        </article>
+
+        <!-- Satellite KPI 1: Sales -->
+        <article class="bj-card">
+          <div class="bj-kpi__head">
+            <div class="bj-kpi__title">Tenant Sales</div>
+            <span class="bj-kpi__icon"
+              ><i data-lucide="coins" class="lucide"></i
+            ></span>
+          </div>
+          <div class="bj-kpi__value">
+            <span class="bj-kpi__unit">AED</span>14.2M
+          </div>
+          <div class="bj-kpi__row">
+            <span class="bj-delta bj-delta--up">+6.1% WoW</span>
+            <span class="bj-kpi__meta">Basket AED 412</span>
+          </div>
+          <svg
+            class="bj-spark"
+            viewBox="0 0 400 48"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M0,38 L30,34 L60,36 L90,30 L120,26 L150,28 L180,22 L210,18 L240,24 L270,18 L300,14 L330,16 L360,10 L400,12"
+              fill="none"
+              stroke="#5fd97a"
+              stroke-width="1.5"
+            />
+          </svg>
+        </article>
+
+        <!-- Satellite KPI 2: Conversion -->
+        <article class="bj-card">
+          <div class="bj-kpi__head">
+            <div class="bj-kpi__title">Footfall → Purchase</div>
+            <span class="bj-kpi__icon"
+              ><i data-lucide="git-pull-request-arrow" class="lucide"></i
+            ></span>
+          </div>
+          <div class="bj-kpi__value">34.7%</div>
+          <div class="bj-kpi__row">
+            <span class="bj-delta bj-delta--up">+2.1pp WoW</span>
+            <span class="bj-kpi__meta">Anchor draw 41%</span>
+          </div>
+          <svg
+            class="bj-spark"
+            viewBox="0 0 400 48"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M0,32 L30,30 L60,28 L90,30 L120,24 L150,26 L180,22 L210,24 L240,18 L270,20 L300,16 L330,18 L360,14 L400,12"
+              fill="none"
+              stroke="#C7256D"
+              stroke-width="1.5"
+            />
+          </svg>
+        </article>
+
+        <!-- Satellite KPI 3: CRM -->
+        <article class="bj-card">
+          <div class="bj-kpi__head">
+            <div class="bj-kpi__title">B Hub Active Members</div>
+            <span class="bj-kpi__icon"
+              ><i data-lucide="id-card" class="lucide"></i
+            ></span>
+          </div>
+          <div class="bj-kpi__value">128,940</div>
+          <div class="bj-kpi__row">
+            <span class="bj-delta bj-delta--up">+1.8% MoM</span>
+            <span class="bj-delta bj-delta--down">−0.4pp churn</span>
+          </div>
+          <svg
+            class="bj-spark"
+            viewBox="0 0 400 48"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M0,30 L30,28 L60,30 L90,26 L120,28 L150,24 L180,26 L210,22 L240,24 L270,20 L300,22 L330,18 L360,20 L400,16"
+              fill="none"
+              stroke="#8B2D8E"
+              stroke-width="1.5"
+            />
+          </svg>
+        </article>
+      </section>
+
+      <!-- DRIVERS -->
+      <div class="bj-section-header">
+        <span class="bj-eyebrow">Lift Drivers · Last 24h</span>
+        <span class="bj-section-header__meta">Sources · footfall · CRM · campaigns</span>
+      </div>
+
+      <section class="bj-driver-grid" aria-label="Lift drivers">
+        <article class="bj-card">
+          <div class="bj-driver__head">
+            <span class="bj-kpi__icon"
+              ><i data-lucide="users-round" class="lucide"></i
+            ></span>
+            <span class="bj-driver__title">Footfall · Saks Evening Window</span>
+          </div>
+          <p class="bj-driver__body">
+            Saks Fifth Avenue evening footfall (18:00–22:00) is the primary
+            lift driver — concentrated on Level 2 north spine, with cross-zone
+            flow into the dining cluster.
+          </p>
+          <div class="bj-driver__stats">
+            <div>
+              <span class="bj-driver__stat-label">Visits</span>
+              <span class="bj-driver__stat-value">3,420</span>
+            </div>
+            <div>
+              <span class="bj-driver__stat-label">Δ WoW</span>
+              <span class="bj-driver__stat-value" style="color: #5fd97a"
+                >+14.2%</span
+              >
+            </div>
+            <div>
+              <span class="bj-driver__stat-label">Dwell</span>
+              <span class="bj-driver__stat-value">42 min</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="bj-card">
+          <div class="bj-driver__head">
+            <span class="bj-kpi__icon"
+              ><i data-lucide="megaphone" class="lucide"></i
+            ></span>
+            <span class="bj-driver__title">Campaign · Ramadan Late Hours</span>
+          </div>
+          <p class="bj-driver__body">
+            The Ramadan Late Hours push to B Hub Gold members within 5 km is
+            converting at 4.8% landing → visit — well above the 2.1% baseline
+            for evening campaigns.
+          </p>
+          <div class="bj-driver__stats">
+            <div>
+              <span class="bj-driver__stat-label">CTR</span>
+              <span class="bj-driver__stat-value">7.4%</span>
+            </div>
+            <div>
+              <span class="bj-driver__stat-label">Attributed visits</span>
+              <span class="bj-driver__stat-value">1,180</span>
+            </div>
+            <div>
+              <span class="bj-driver__stat-label">Δ vs plan</span>
+              <span class="bj-driver__stat-value" style="color: #5fd97a"
+                >+22.0%</span
+              >
+            </div>
+          </div>
+        </article>
+
+        <article class="bj-card">
+          <div class="bj-driver__head">
+            <span class="bj-kpi__icon"
+              ><i data-lucide="id-card" class="lucide"></i
+            ></span>
+            <span class="bj-driver__title">CRM · B Hub Gold Activation</span>
+          </div>
+          <p class="bj-driver__body">
+            Gold-tier visit frequency climbed to 2.4 visits/wk; AOV per member
+            is steady at AED 612. Re-engagement of the dormant 90-day cohort
+            contributed 8% of today's basket value.
+          </p>
+          <div class="bj-driver__stats">
+            <div>
+              <span class="bj-driver__stat-label">Active Gold</span>
+              <span class="bj-driver__stat-value">18,240</span>
+            </div>
+            <div>
+              <span class="bj-driver__stat-label">Freq</span>
+              <span class="bj-driver__stat-value">2.4 / wk</span>
+            </div>
+            <div>
+              <span class="bj-driver__stat-label">AOV</span>
+              <span class="bj-driver__stat-value">AED 612</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- NEXT BEST ACTION -->
+      <div class="bj-section-header">
+        <span class="bj-eyebrow">Next Best Action</span>
+        <span class="bj-section-header__meta">Confidence 0.86 · window weekend</span>
+      </div>
+
+      <section class="bj-card bj-nba" aria-label="Next Best Action">
+        <div>
+          <span class="bj-eyebrow">Activation · B Hub Gold · Geo 2km</span>
+          <h2 class="bj-nba__title">
+            Activate the <em style="font-style: italic; font-family: var(--bj-font-narrator)">Late Dining</em>
+            push to B Hub Gold members within 2 km.
+          </h2>
+          <p class="bj-nba__body">
+            Projected uplift: <strong>+AED 84K basket value</strong> over the
+            weekend window, driven by dining cluster cross-flow from the Saks
+            evening spike. Snooze if a discount push is already scheduled —
+            this action is incremental, not stackable.
+          </p>
+          <div class="bj-nba__meta">
+            <span>Cohort 12,400 members</span>
+            <span>Channel app + SMS</span>
+            <span>Expires Sun 23:59</span>
+          </div>
+        </div>
+        <div class="bj-nba__actions">
+          <button type="button" class="bj-btn bj-btn--ghost">
+            <i data-lucide="bell-off" class="lucide"></i> Snooze
+          </button>
+          <button type="button" class="bj-btn bj-btn--primary">
+            <i data-lucide="zap" class="lucide"></i> Activate
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer (h=56) -->
+    <footer class="bj-footer" role="contentinfo">
+      <div class="bj-footer__left">
+        <span>Powered by AIHUBZ AI Concierge</span>
+        <span class="bj-live"
+          ><span class="bj-live__dot" aria-hidden="true"></span> Live</span
+        >
+      </div>
+      <div class="bj-footer__right">
+        <span id="bj-updated">Updated 17:38 GST</span>
+        <button type="button" class="bj-icon-btn" aria-label="Refresh">
+          <i data-lucide="refresh-cw" class="lucide"></i> Refresh
+        </button>
+      </div>
+    </footer>
+
+    <!-- AIHUBZ delivery pill (bottom-left, 24px from edges) -->
+    <span class="bj-built-by-pill">Built by AIHUBZ</span>
+
+    <!-- Lucide icons (canonical, via CDN per brand canon) -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+      if (window.lucide && typeof window.lucide.createIcons === "function") {
+        window.lucide.createIcons();
+      }
+    </script>
+  </body>
+</html>
