@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>BurJuman × Mawarid · Command Center Pitch</title>
+<link rel="stylesheet" href="slides.css" />
+<style>html, body { margin: 0; padding: 0; background: #0a0a0a; }</style>
+</head>
+<body>
+
+<deck-stage>
+
+  <!-- ============================================================
+       SLIDE 1 — TITLE (full-bleed gradient hero)
+       ============================================================ -->
+  <section data-screen-label="01 Title">
+    <div style="position:absolute; inset:0; background: linear-gradient(135deg,#FF6B47 0%,#C7256D 50%,#8B2D8E 100%);"></div>
+
+    <div style="position:absolute; left:96px; top:96px; display:flex; align-items:center; gap:32px;">
+      <span class="slide-wordmark" style="font-size:32px;">BURJUMAN</span>
+      <span style="width:1px; height:34px; background:rgba(255,255,255,0.4);"></span>
+      <span style="font-size:18px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.92); font-weight:500;">Mawarid Holding</span>
+    </div>
+
+    <div style="position:absolute; left:96px; bottom:200px; max-width:1400px;">
+      <div style="font-size:20px; letter-spacing:0.28em; text-transform:uppercase; color:rgba(255,255,255,0.78); font-weight:500; margin-bottom:36px;">Command Center · Proposal</div>
+      <h1 style="margin:0; font-family:var(--bj-font-ui); font-weight:600; font-size:120px; line-height:1.02; letter-spacing:-0.02em; color:#fff;">One screen<br/>for the whole mall.</h1>
+      <p style="margin:32px 0 0; font-family:var(--bj-font-narrator); font-style:italic; font-size:32px; line-height:1.3; color:rgba(255,255,255,0.92); max-width:1100px;">"Story Mode for the board, Explore Mode for ops, the same 26-KPI source of truth underneath."</p>
+    </div>
+
+    <div style="position:absolute; left:96px; bottom:96px; display:flex; align-items:center; gap:24px;">
+      <span style="font-size:16px; color:rgba(255,255,255,0.86); letter-spacing:0.06em;">CTO + Procurement review</span>
+      <span style="width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.5);"></span>
+      <span style="font-size:16px; color:rgba(255,255,255,0.86); font-variant-numeric:tabular-nums;">May 2026</span>
+    </div>
+
+    <span class="aihubz-pill">Built by AIHUBZ</span>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 2 — AGENDA (institutional 4-up)
+       ============================================================ -->
+  <section data-screen-label="02 Agenda">
+    <div class="slide-brandbar">
+      <span class="slide-wordmark">BURJUMAN</span>
+      <span class="divider"></span>
+      <span class="co">Mawarid Holding</span>
+      <span class="title">Command Center · Proposal</span>
+      <span class="meta">16 May 2026 · CTO Review</span>
+    </div>
+
+    <div class="slide-body" style="top:80px; padding:96px 96px 64px;">
+      <div class="eyebrow" style="margin-bottom:24px;">Agenda</div>
+      <h2 style="margin:0 0 64px; font-size:64px; font-weight:600; letter-spacing:-0.02em; line-height:1.05; max-width:1300px;">A 4-part review.</h2>
+
+      <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:24px; flex:1;">
+        <div class="slide-card">
+          <span style="font-family:var(--bj-font-mono); font-size:16px; color:#FF6B47;">01</span>
+          <h3 style="margin:0; font-size:30px; font-weight:600; line-height:1.15; letter-spacing:-0.01em;">The shape of the problem</h3>
+          <p style="margin:0; font-size:16px; line-height:1.5; color:#A8A8B3;">142 tenants, 26 KPIs, three audiences — one source of truth.</p>
+        </div>
+        <div class="slide-card">
+          <span style="font-family:var(--bj-font-mono); font-size:16px; color:#C7256D;">02</span>
+          <h3 style="margin:0; font-size:30px; font-weight:600; line-height:1.15; letter-spacing:-0.01em;">Story / Explore architecture</h3>
+          <p style="margin:0; font-size:16px; line-height:1.5; color:#A8A8B3;">The mode-router pattern: board view, ops view, no duplication.</p>
+        </div>
+        <div class="slide-card">
+          <span style="font-family:var(--bj-font-mono); font-size:16px; color:#8B2D8E;">03</span>
+          <h3 style="margin:0; font-size:30px; font-weight:600; line-height:1.15; letter-spacing:-0.01em;">Next Best Action engine</h3>
+          <p style="margin:0; font-size:16px; line-height:1.5; color:#A8A8B3;">Driver attribution → action card → projected uplift.</p>
+        </div>
+        <div class="slide-card">
+          <span style="font-family:var(--bj-font-mono); font-size:16px; color:#E5294A;">04</span>
+          <h3 style="margin:0; font-size:30px; font-weight:600; line-height:1.15; letter-spacing:-0.01em;">Commercial &amp; rollout</h3>
+          <p style="margin:0; font-size:16px; line-height:1.5; color:#A8A8B3;">Y1–Y3 engagement arc, procurement scope, AIHUBZ delivery.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span class="powered">Powered by <strong>AIHUBZ AI Concierge</strong></span>
+      <div class="right">
+        <span class="live-dot"></span>
+        <span>live</span>
+        <span class="page">02 / 12</span>
+      </div>
+    </div>
+    <span class="aihubz-pill">Built by AIHUBZ</span>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 3 — HERO KPI (Story Mode pattern at full scale)
+       ============================================================ -->
+  <section data-screen-label="03 Hero KPI">
+    <div class="slide-brandbar">
+      <span class="slide-wordmark">BURJUMAN</span>
+      <span class="divider"></span>
+      <span class="co">Mawarid Holding</span>
+      <span class="title">Command Center · Story Mode example</span>
+      <span class="meta">16 May 2026</span>
+    </div>
+
+    <div class="slide-narrator">
+      <span class="quote">"Saturday traffic is tracking 11% above plan; the Saks evening window is doing most of the work — consider holding off on a discount push."</span>
+      <span style="display:inline-flex; align-items:center; gap:8px; border:1px solid #26262C; color:#A8A8B3; padding:10px 18px; border-radius:999px; font: 500 14px/1 var(--bj-font-ui);">Why?</span>
+    </div>
+
+    <div class="slide-body" style="top:160px;">
+      <div class="eyebrow" style="margin-bottom:20px;">The ONE hero number</div>
+      <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:24px; flex:1;">
+
+        <!-- Hero tile -->
+        <div class="slide-card" style="padding:48px 56px; position:relative; overflow:hidden;">
+          <div style="position:absolute; left:0; top:0; width:6px; height:100%; background: linear-gradient(180deg,#FF6B47 0%,#C7256D 50%,#8B2D8E 100%);"></div>
+          <span class="eyebrow" style="color:#A8A8B3;">WEEKEND FOOTFALL · 16–17 MAY</span>
+          <div style="display:flex; align-items:flex-end; gap:32px; margin-top:8px;">
+            <span style="font-weight:600; font-size:200px; line-height:0.95; letter-spacing:-0.03em; font-variant-numeric:tabular-nums; color:#fff;">142,840</span>
+            <span class="delta up" style="margin-bottom:32px; font-size:20px; padding:10px 22px;">▲ +11.0% vs plan</span>
+          </div>
+          <svg viewBox="0 0 600 80" preserveAspectRatio="none" style="margin-top:32px; width:100%; height:120px;">
+            <polygon points="0,80 0,70 50,66 100,58 150,60 200,48 250,50 300,42 350,38 400,44 450,34 500,36 550,28 600,32 600,80" fill="#FF6B47" opacity="0.18"/>
+            <polyline points="0,70 50,66 100,58 150,60 200,48 250,50 300,42 350,38 400,44 450,34 500,36 550,28 600,32" fill="none" stroke="#FF6B47" stroke-width="3"/>
+          </svg>
+          <span style="margin-top:auto; font-size:16px; color:#A8A8B3; font-variant-numeric:tabular-nums;">Sat 09:00 · 17h ago through forecast close · benchmarked vs plan &amp; 4-week median</span>
+        </div>
+
+        <!-- 3 satellites -->
+        <div style="display:grid; grid-template-rows:repeat(3, 1fr); gap:18px;">
+          <div class="slide-card" style="padding:24px 30px; gap:8px;">
+            <span class="eyebrow" style="color:#A8A8B3; font-size:13px;">TENANT SALES · WEEK</span>
+            <span style="font-weight:600; font-size:54px; line-height:1; font-variant-numeric:tabular-nums; color:#fff; letter-spacing:-0.01em;">AED 14.2M</span>
+            <span class="delta down" style="align-self:flex-start; font-size:14px; padding:6px 14px;">▼ −1.8% MoM</span>
+          </div>
+          <div class="slide-card" style="padding:24px 30px; gap:8px;">
+            <span class="eyebrow" style="color:#A8A8B3; font-size:13px;">B HUB ACTIVE</span>
+            <span style="font-weight:600; font-size:54px; line-height:1; font-variant-numeric:tabular-nums; color:#fff; letter-spacing:-0.01em;">28,140</span>
+            <span class="delta up" style="align-self:flex-start; font-size:14px; padding:6px 14px;">▲ +4.0% WoW</span>
+          </div>
+          <div class="slide-card" style="padding:24px 30px; gap:8px;">
+            <span class="eyebrow" style="color:#A8A8B3; font-size:13px;">CONVERSION</span>
+            <span style="font-weight:600; font-size:54px; line-height:1; font-variant-numeric:tabular-nums; color:#fff; letter-spacing:-0.01em;">38%</span>
+            <span class="delta up" style="align-self:flex-start; font-size:14px; padding:6px 14px;">▲ +2.1 pp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span class="powered">Powered by <strong>AIHUBZ AI Concierge</strong></span>
+      <div class="right">
+        <span class="live-dot"></span>
+        <span>live · refreshed 14s ago</span>
+        <span class="page">03 / 12</span>
+      </div>
+    </div>
+    <span class="aihubz-pill">Built by AIHUBZ</span>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 4 — THREE DRIVERS (Why)
+       ============================================================ -->
+  <section data-screen-label="04 Drivers">
+    <div class="slide-brandbar">
+      <span class="slide-wordmark">BURJUMAN</span>
+      <span class="divider"></span>
+      <span class="co">Mawarid Holding</span>
+      <span class="title">Why is this happening</span>
+      <span class="meta">Driver attribution</span>
+    </div>
+
+    <div class="slide-body" style="top:80px; padding:96px 96px 64px;">
+      <div class="eyebrow" style="margin-bottom:24px;">Driver cards · campaign · footfall · CRM</div>
+      <h2 style="margin:0 0 56px; font-size:64px; font-weight:600; letter-spacing:-0.02em; line-height:1.05;">Three drivers,<br/>one weekend.</h2>
+
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; flex:1;">
+        <div class="slide-card" style="border-top:4px solid #FF6B47; padding:36px 36px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B47" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v3a4 4 0 0 0 4 4h1"/><path d="m11 6 10-3v18l-10-3z"/><path d="M11 6v12"/></svg>
+            <span class="kicker" style="color:#FF6B47;">Campaign</span>
+          </div>
+          <h3 style="margin:8px 0 0; font-size:32px; font-weight:600; line-height:1.15; letter-spacing:-0.01em;">Saks Spring Push — "evening window"</h3>
+          <p style="margin:0; font-size:18px; line-height:1.5; color:#A8A8B3;">B Hub Gold within 2 km · 4 SMS + push waves over Fri/Sat.</p>
+          <div style="margin-top:auto; display:flex; align-items:baseline; justify-content:space-between; gap:12px;">
+            <span style="font-family:var(--bj-font-mono); font-size:22px; color:#fff; font-variant-numeric:tabular-nums;">+4,210 visits</span>
+            <span style="font-size:16px; color:#2EE6A0; font-variant-numeric:tabular-nums;">+38% vs avg</span>
+          </div>
+        </div>
+
+        <div class="slide-card" style="border-top:4px solid #C7256D; padding:36px 36px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C7256D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>
+            <span class="kicker" style="color:#C7256D;">Footfall</span>
+          </div>
+          <h3 style="margin:8px 0 0; font-size:32px; font-weight:600; line-height:1.15; letter-spacing:-0.01em;">Saks evening 18:00–22:00 anchor draw</h3>
+          <p style="margin:0; font-size:18px; line-height:1.5; color:#A8A8B3;">Saturday surge above the 4-week median of 2,990 evening visits.</p>
+          <div style="margin-top:auto; display:flex; align-items:baseline; justify-content:space-between; gap:12px;">
+            <span style="font-family:var(--bj-font-mono); font-size:22px; color:#fff; font-variant-numeric:tabular-nums;">3,420 visits</span>
+            <span style="font-size:16px; color:#2EE6A0; font-variant-numeric:tabular-nums;">+14.2% WoW</span>
+          </div>
+        </div>
+
+        <div class="slide-card" style="border-top:4px solid #8B2D8E; padding:36px 36px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B2D8E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M15 8h2M15 12h2M7 16h10"/></svg>
+            <span class="kicker" style="color:#8B2D8E;">B Hub · CRM</span>
+          </div>
+          <h3 style="margin:8px 0 0; font-size:32px; font-weight:600; line-height:1.15; letter-spacing:-0.01em;">Gold cohort activation</h3>
+          <p style="margin:0; font-size:18px; line-height:1.5; color:#A8A8B3;">2,140 Gold members hit · 38% visit-rate this weekend.</p>
+          <div style="margin-top:auto; display:flex; align-items:baseline; justify-content:space-between; gap:12px;">
+            <span style="font-family:var(--bj-font-mono); font-size:22px; color:#fff; font-variant-numeric:tabular-nums;">AED 412K basket</span>
+            <span style="font-size:16px; color:#2EE6A0; font-variant-numeric:tabular-nums;">AOV +6.1%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span class="powered">Powered by <strong>AIHUBZ AI Concierge</strong></span>
+      <div class="right">
+        <span class="live-dot"></span><span>live</span>
+        <span class="page">04 / 12</span>
+      </div>
+    </div>
+    <span class="aihubz-pill">Built by AIHUBZ</span>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 5 — NEXT BEST ACTION (commercial action)
+       ============================================================ -->
+  <section data-screen-label="05 NBA">
+    <div class="slide-brandbar">
+      <span class="slide-wordmark">BURJUMAN</span>
+      <span class="divider"></span>
+      <span class="co">Mawarid Holding</span>
+      <span class="title">Next Best Action</span>
+      <span class="meta">Recommendation 1 of 3</span>
+    </div>
+
+    <div class="slide-body" style="top:80px; padding:96px 96px 64px;">
+      <div class="kicker" style="margin-bottom:24px;">Next Best Action · weekend</div>
+      <h2 style="margin:0 0 36px; font-size:80px; font-weight:600; letter-spacing:-0.02em; line-height:1.0; max-width:1500px;">Activate Late Dining push to B Hub Gold within 2 km.</h2>
+      <p style="margin:0 0 56px; font-family:var(--bj-font-narrator); font-style:italic; font-size:28px; line-height:1.35; color:#A8A8B3; max-width:1400px;">"Projected uplift over the weekend window: <span style="color:#fff;">+AED 84K basket value</span>, +1,840 dwell-minutes attributed to dining."</p>
+
+      <div style="background:#0E0E10; border-radius:18px; box-shadow:inset 0 0 0 1px rgba(229,41,74,0.45), 0 16px 48px rgba(229,41,74,0.12); padding:40px 48px; display:flex; align-items:center; gap:36px;">
+        <div style="width:72px; height:72px; border-radius:18px; background:rgba(229,41,74,0.14); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E5294A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
+          <span class="kicker" style="color:#E5294A;">Next Best Action</span>
+          <span style="font-size:26px; font-weight:500; color:#fff; line-height:1.3;">Late Dining · 19:00–22:00 · Saks-adjacent tenants</span>
+          <span style="font-size:16px; color:#A8A8B3; font-variant-numeric:tabular-nums;">Audience: 2,140 Gold members · channels: SMS + push · 2 waves</span>
+        </div>
+        <div style="display:flex; gap:14px;">
+          <button style="border:none; background:#E5294A; color:#fff; padding:18px 36px; border-radius:999px; font:600 18px/1 var(--bj-font-ui); box-shadow:0 12px 32px rgba(229,41,74,0.28); display:inline-flex; align-items:center; gap:10px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            Activate
+          </button>
+          <button style="background:transparent; color:#A8A8B3; border:1px solid #26262C; padding:17px 32px; border-radius:999px; font:500 18px/1 var(--bj-font-ui);">Snooze</button>
+        </div>
+      </div>
+
+      <div style="margin-top:48px; display:grid; grid-template-columns:repeat(4, 1fr); gap:24px;">
+        <div style="display:flex; flex-direction:column; gap:6px;"><span class="eyebrow">PROJECTED UPLIFT</span><span style="font-size:32px; font-weight:600; color:#fff; font-variant-numeric:tabular-nums;">AED 84K</span></div>
+        <div style="display:flex; flex-direction:column; gap:6px;"><span class="eyebrow">AUDIENCE</span><span style="font-size:32px; font-weight:600; color:#fff; font-variant-numeric:tabular-nums;">2,140</span></div>
+        <div style="display:flex; flex-direction:column; gap:6px;"><span class="eyebrow">CONFIDENCE</span><span style="font-size:32px; font-weight:600; color:#fff; font-variant-numeric:tabular-nums;">0.82</span></div>
+        <div style="display:flex; flex-direction:column; gap:6px;"><span class="eyebrow">PAYBACK WINDOW</span><span style="font-size:32px; font-weight:600; color:#fff; font-variant-numeric:tabular-nums;">48h</span></div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span class="powered">Powered by <strong>AIHUBZ AI Concierge</strong></span>
+      <div class="right">
+        <span class="live-dot"></span><span>live</span>
+        <span class="page">05 / 12</span>
+      </div>
+    </div>
+    <span class="aihubz-pill">Built by AIHUBZ</span>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 6 — ARCHITECTURE (mode router)
+       ============================================================ -->
+  <section data-screen-label="06 Architecture">
+    <div class="slide-brandbar">
+      <span class="slide-wordmark">BURJUMAN</span>
+      <span class="divider"></span>
+      <span class="co">Mawarid Holding</span>
+      <span class="title">Mode-router architecture</span>
+      <span class="meta">Story · Explore</span>
+    </div>
+
+    <div class="slide-body" style="top:80px; padding:96px 96px 64px;">
+      <div class="eyebrow" style="margin-bottom:24px;">One source of truth · two views</div>
+      <h2 style="margin:0 0 56px; font-size:64px; font-weight:600; letter-spacing:-0.02em; line-height:1.05;">Story for the board.<br/>Explore for ops.</h2>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; flex:1;">
+        <!-- STORY -->
+        <div class="slide-card" style="padding:40px 44px;">
+          <div style="display:flex; align-items:center; gap:14px;">
+            <div style="width:48px; height:48px; border-radius:14px; background:rgba(255,107,71,0.14); display:flex; align-items:center; justify-content:center;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B47" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <span class="kicker" style="color:#FF6B47;">Story Mode · default</span>
+          </div>
+          <h3 style="margin:14px 0 8px; font-size:36px; font-weight:600; letter-spacing:-0.01em; line-height:1.1;">Executive narrative</h3>
+          <p style="margin:0; font-size:18px; line-height:1.5; color:#A8A8B3;">Mawarid board, QBRs, weekly exec digests.</p>
+          <ul style="margin:24px 0 0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:14px;">
+            <li style="display:flex; gap:12px; font-size:18px; color:#fff; line-height:1.5;"><span style="color:#FF6B47;">→</span> 1 AI narrator sentence</li>
+            <li style="display:flex; gap:12px; font-size:18px; color:#fff; line-height:1.5;"><span style="color:#FF6B47;">→</span> 1 hero number, 72pt+</li>
+            <li style="display:flex; gap:12px; font-size:18px; color:#fff; line-height:1.5;"><span style="color:#FF6B47;">→</span> 3 driver cards</li>
+            <li style="display:flex; gap:12px; font-size:18px; color:#fff; line-height:1.5;"><span style="color:#FF6B47;">→</span> 1 Next Best Action with Activate</li>
+          </ul>
+        </div>
+
+        <!-- EXPLORE -->
+        <div class="slide-card" style="padding:40px 44px;">
+          <div style="display:flex; align-items:center; gap:14px;">
+            <div style="width:48px; height:48px; border-radius:14px; background:rgba(139,45,142,0.18); display:flex; align-items:center; justify-content:center;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B2D8E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <span class="kicker" style="color:#8B2D8E;">Explore Mode</span>
+          </div>
+          <h3 style="margin:14px 0 8px; font-size:36px; font-weight:600; letter-spacing:-0.01em; line-height:1.1;">Operations intelligence</h3>
+          <p style="margin:0; font-size:18px; line-height:1.5; color:#A8A8B3;">Mall ops team, tenant teams, per-tenant portals.</p>
+          <ul style="margin:24px 0 0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:14px;">
+            <li style="display:flex; gap:12px; font-size:18px; color:#fff; line-height:1.5;"><span style="color:#8B2D8E;">→</span> Full 26-KPI taxonomy</li>
+            <li style="display:flex; gap:12px; font-size:18px; color:#fff; line-height:1.5;"><span style="color:#8B2D8E;">→</span> Zone + tenant + hour filters</li>
+            <li style="display:flex; gap:12px; font-size:18px; color:#fff; line-height:1.5;"><span style="color:#8B2D8E;">→</span> Tenant performance table</li>
+            <li style="display:flex; gap:12px; font-size:18px; color:#fff; line-height:1.5;"><span style="color:#8B2D8E;">→</span> Raw queries · saved views · CSV export</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:32px; padding:20px 28px; background:#0E0E10; border-radius:12px; box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06); display:flex; align-items:center; gap:20px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A8A8B3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span style="font-size:16px; color:#A8A8B3; line-height:1.5;">Both modes share the same warehouse, same KPI definitions, and the same AIHUBZ AI Concierge for the narrator strip — no data duplication.</span>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span class="powered">Powered by <strong>AIHUBZ AI Concierge</strong></span>
+      <div class="right">
+        <span class="live-dot"></span><span>live</span>
+        <span class="page">06 / 12</span>
+      </div>
+    </div>
+    <span class="aihubz-pill">Built by AIHUBZ</span>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 7 — QUOTE / SECTION BREAK
+       ============================================================ -->
+  <section data-screen-label="07 Quote">
+    <div style="position:absolute; inset:0; background:#000;"></div>
+    <div style="position:absolute; left:0; top:0; height:8px; width:100%; background: linear-gradient(90deg,#FF6B47 0%,#C7256D 50%,#8B2D8E 100%);"></div>
+
+    <div style="position:absolute; left:160px; right:160px; top:50%; transform:translateY(-50%);">
+      <div class="eyebrow" style="color:#A8A8B3; margin-bottom:40px;">Posture</div>
+      <p style="margin:0; font-family:var(--bj-font-narrator); font-style:italic; font-weight:400; font-size:96px; line-height:1.15; color:#fff; letter-spacing:-0.01em;">"The dashboard isn't a marketing surface.<br/>It's a second set of eyes on the mall —<br/>quietly, on the record, every hour."</p>
+      <div style="margin-top:48px; display:flex; align-items:center; gap:20px;">
+        <div style="width:6px; height:32px; background: linear-gradient(180deg,#FF6B47 0%,#C7256D 60%,#8B2D8E 100%);"></div>
+        <span style="font-size:18px; letter-spacing:0.08em; text-transform:uppercase; color:#A8A8B3; font-weight:500;">AIHUBZ · Command Center brief</span>
+      </div>
+    </div>
+
+    <span class="aihubz-pill">Built by AIHUBZ</span>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 8 — DATA ARCHITECTURE (under the hood)
+       ============================================================ -->
+  <section data-screen-label="08 Data Architecture">
+    <div class="slide-brandbar">
+      <span class="slide-wordmark">BURJUMAN</span>
+      <span class="divider"></span>
+      <span class="co">Mawarid Holding</span>
+      <span class="title">Data architecture</span>
+      <span class="meta">Under the hood</span>
+    </div>
+
+    <div class="slide-body" style="top:80px; padding:96px 96px 64px;">
+      <div class="eyebrow" style="margin-bottom:24px;">Pipelines · freshness · sources</div>
+      <h2 style="margin:0 0 56px; font-size:64px; font-weight:600; letter-spacing:-0.02em; line-height:1.05;">Four feeds. One warehouse.<br/>Live by default.</h2>
+
+      <div style="flex:1; display:grid; grid-template-columns: 1fr 1.4fr 1fr; gap:32px; align-items:stretch;">
+
+        <!-- Sources column -->
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <span class="eyebrow" style="margin-bottom:6px;">Sources</span>
+          <div class="slide-card" style="padding:20px 24px; border-left:3px solid #FF6B47;"><span style="font-size:18px; font-weight:500; color:#fff;">Footfall sensors</span><span style="font-size:14px; color:#A8A8B3;">14 zones · 5s tick · LoRa gateway</span></div>
+          <div class="slide-card" style="padding:20px 24px; border-left:3px solid #C7256D;"><span style="font-size:18px; font-weight:500; color:#fff;">Tenant POS</span><span style="font-size:14px; color:#A8A8B3;">142 tenants · SFTP nightly + live for top 30</span></div>
+          <div class="slide-card" style="padding:20px 24px; border-left:3px solid #8B2D8E;"><span style="font-size:18px; font-weight:500; color:#fff;">B Hub CRM</span><span style="font-size:14px; color:#A8A8B3;">CDP · 28.1K active · webhook + REST</span></div>
+          <div class="slide-card" style="padding:20px 24px; border-left:3px solid #E5294A;"><span style="font-size:18px; font-weight:500; color:#fff;">BurJuman.com</span><span style="font-size:14px; color:#A8A8B3;">GA4 + event stream · 5min</span></div>
+        </div>
+
+        <!-- Warehouse middle -->
+        <div style="display:flex; flex-direction:column; gap:18px; justify-content:center;">
+          <span class="eyebrow" style="text-align:center;">Warehouse · KPI fabric</span>
+          <div style="background:#0E0E10; border-radius:18px; box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06); padding:28px; display:flex; flex-direction:column; gap:14px; position:relative; overflow:hidden;">
+            <div style="position:absolute; left:0; top:0; height:6px; width:100%; background: linear-gradient(90deg,#FF6B47 0%,#C7256D 50%,#8B2D8E 100%);"></div>
+            <div style="display:flex; align-items:center; justify-content:space-between; padding-top:8px;">
+              <span style="font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:#A8A8B3; font-weight:500;">BURJUMAN · KPI FABRIC</span>
+              <span style="font-family:var(--bj-font-mono); font-size:13px; color:#2EE6A0;">● live</span>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; margin-top:8px;">
+              <span style="font-family:var(--bj-font-mono); font-size:12px; color:#fff; background:#15151A; padding:8px 10px; border-radius:6px; text-align:center;">Footfall · 5</span>
+              <span style="font-family:var(--bj-font-mono); font-size:12px; color:#fff; background:#15151A; padding:8px 10px; border-radius:6px; text-align:center;">Sales · 5</span>
+              <span style="font-family:var(--bj-font-mono); font-size:12px; color:#fff; background:#15151A; padding:8px 10px; border-radius:6px; text-align:center;">Conv. · 4</span>
+              <span style="font-family:var(--bj-font-mono); font-size:12px; color:#fff; background:#15151A; padding:8px 10px; border-radius:6px; text-align:center;">CRM · 4</span>
+              <span style="font-family:var(--bj-font-mono); font-size:12px; color:#fff; background:#15151A; padding:8px 10px; border-radius:6px; text-align:center;">Digital · 4</span>
+              <span style="font-family:var(--bj-font-mono); font-size:12px; color:#fff; background:#15151A; padding:8px 10px; border-radius:6px; text-align:center;">Ops · 4</span>
+            </div>
+            <div style="height:1px; background:#26262C; margin:8px 0;"></div>
+            <span style="font-size:14px; color:#A8A8B3; line-height:1.5;">Snowflake · dbt models · row-level audit · canonical 26-KPI taxonomy as the single source of truth.</span>
+          </div>
+          <div style="background:#0E0E10; border-radius:14px; box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06); padding:20px 24px; display:flex; align-items:center; gap:14px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B2D8E" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
+            <div style="display:flex; flex-direction:column;">
+              <span style="font-size:15px; font-weight:500; color:#fff;">AIHUBZ AI Concierge</span>
+              <span style="font-size:13px; color:#A8A8B3;">Driver attribution · NBA generation · narrator strip</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Surfaces column -->
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <span class="eyebrow" style="margin-bottom:6px;">Surfaces</span>
+          <div class="slide-card" style="padding:20px 24px;"><span style="font-size:18px; font-weight:500; color:#fff;">Story Mode</span><span style="font-size:14px; color:#A8A8B3;">Board · QBR exports</span></div>
+          <div class="slide-card" style="padding:20px 24px;"><span style="font-size:18px; font-weight:500; color:#fff;">Explore Mode</span><span style="font-size:14px; color:#A8A8B3;">Mall ops · saved views</span></div>
+          <div class="slide-card" style="padding:20px 24px;"><span style="font-size:18px; font-weight:500; color:#fff;">Tenant portals</span><span style="font-size:14px; color:#A8A8B3;">Per-tenant SSO scope</span></div>
+          <div class="slide-card" style="padding:20px 24px;"><span style="font-size:18px; font-weight:500; color:#fff;">AURA Concierge</span><span style="font-size:14px; color:#A8A8B3;">BurJuman.com B Hub</span></div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px; display:grid; grid-template-columns:repeat(4, 1fr); gap:24px;">
+        <div style="display:flex; flex-direction:column; gap:6px;"><span class="eyebrow">FRESHNESS · FOOTFALL</span><span style="font-size:24px; font-weight:600; color:#fff; font-variant-numeric:tabular-nums;">5 sec</span></div>
+        <div style="display:flex; flex-direction:column; gap:6px;"><span class="eyebrow">FRESHNESS · SALES</span><span style="font-size:24px; font-weight:600; color:#fff; font-variant-numeric:tabular-nums;">live (top 30) · T+1 (tail)</span></div>
+        <div style="display:flex; flex-direction:column; gap:6px;"><span class="eyebrow">RESIDENCY</span><span style="font-size:24px; font-weight:600; color:#fff;">UAE · Dubai-South AZ</span></div>
+        <div style="display:flex; flex-direction:column; gap:6px;"><span class="eyebrow">UPTIME · 30D</span><span style="font-size:24px; font-weight:600; color:#fff; font-variant-numeric:tabular-nums;">99.97%</span></div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span class="powered">Powered by <strong>AIHUBZ AI Concierge</strong></span>
+      <div class="right">
+        <span class="live-dot"></span><span>live</span>
+        <span class="page">08 / 12</span>
+      </div>
+    </div>
+    <span class="aihubz-pill">Built by AIHUBZ</span>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 9 — SECURITY & COMPLIANCE (procurement gate)
+       ============================================================ -->
+  <section data-screen-label="09 Security">
+    <div class="slide-brandbar">
+      <span class="slide-wordmark">BURJUMAN</span>
+      <span class="divider"></span>
+      <span class="co">Mawarid Holding</span>
+      <span class="title">Security &amp; compliance</span>
+      <span class="meta">Procurement scope</span>
+    </div>
+
+    <div class="slide-body" style="top:80px; padding:96px 96px 64px;">
+      <div class="eyebrow" style="margin-bottom:24px;">Controls · attestations · audit posture</div>
+      <h2 style="margin:0 0 56px; font-size:64px; font-weight:600; letter-spacing:-0.02em; line-height:1.05;">Procurement-grade<br/>by construction.</h2>
+
+      <div style="flex:1; display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;">
+        <div class="slide-card" style="padding:32px 36px;">
+          <span class="kicker" style="color:#FF6B47;">Attestations</span>
+          <ul style="margin:8px 0 0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:16px;">
+            <li style="display:flex; align-items:flex-start; gap:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2EE6A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div><div style="font-size:20px; font-weight:600; color:#fff;">SOC 2 Type II</div><div style="font-size:14px; color:#A8A8B3;">AIHUBZ platform · Q4 2025</div></div></li>
+            <li style="display:flex; align-items:flex-start; gap:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2EE6A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div><div style="font-size:20px; font-weight:600; color:#fff;">ISO 27001</div><div style="font-size:14px; color:#A8A8B3;">Active · annual surveillance</div></div></li>
+            <li style="display:flex; align-items:flex-start; gap:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2EE6A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div><div style="font-size:20px; font-weight:600; color:#fff;">UAE NESA-aligned</div><div style="font-size:14px; color:#A8A8B3;">Critical info-infra baseline</div></div></li>
+            <li style="display:flex; align-items:flex-start; gap:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2EE6A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div><div style="font-size:20px; font-weight:600; color:#fff;">UAE PDPL</div><div style="font-size:14px; color:#A8A8B3;">Data subject rights wired</div></div></li>
+          </ul>
+        </div>
+
+        <div class="slide-card" style="padding:32px 36px;">
+          <span class="kicker" style="color:#C7256D;">Controls</span>
+          <ul style="margin:8px 0 0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:16px;">
+            <li style="display:flex; align-items:flex-start; gap:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C7256D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div><div style="font-size:20px; font-weight:600; color:#fff;">RBAC · 6 roles</div><div style="font-size:14px; color:#A8A8B3;">Board · Exec · Ops · Tenant · Vendor · Read</div></div></li>
+            <li style="display:flex; align-items:flex-start; gap:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C7256D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg><div><div style="font-size:20px; font-weight:600; color:#fff;">SSO · SAML / OIDC</div><div style="font-size:14px; color:#A8A8B3;">Azure AD &amp; Okta IdPs</div></div></li>
+            <li style="display:flex; align-items:flex-start; gap:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C7256D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4L4 20"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg><div><div style="font-size:20px; font-weight:600; color:#fff;">AES-256 at rest · TLS 1.3 in transit</div><div style="font-size:14px; color:#A8A8B3;">KMS-managed · BYOK on request</div></div></li>
+            <li style="display:flex; align-items:flex-start; gap:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C7256D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg><div><div style="font-size:20px; font-weight:600; color:#fff;">Immutable audit log</div><div style="font-size:14px; color:#A8A8B3;">7-year retention · WORM</div></div></li>
+          </ul>
+        </div>
+
+        <div class="slide-card" style="padding:32px 36px;">
+          <span class="kicker" style="color:#8B2D8E;">Residency &amp; privacy</span>
+          <ul style="margin:8px 0 0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:16px;">
+            <li style="display:flex; align-items:flex-start; gap:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B2D8E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><div style="font-size:20px; font-weight:600; color:#fff;">Data residency · UAE</div><div style="font-size:14px; color:#A8A8B3;">Dubai-South AZ · no cross-border</div></div></li>
+            <li style="display:flex; align-items:flex-start; gap:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B2D8E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div><div style="font-size:20px; font-weight:600; color:#fff;">RTO 1h · RPO 5min</div><div style="font-size:14px; color:#A8A8B3;">Cross-AZ replication</div></div></li>
+            <li style="display:flex; align-items:flex-start; gap:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B2D8E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a8 8 0 0 1 16 0v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM11 6a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/></svg><div><div style="font-size:20px; font-weight:600; color:#fff;">PII isolation</div><div style="font-size:14px; color:#A8A8B3;">B Hub identity in segregated VPC</div></div></li>
+            <li style="display:flex; align-items:flex-start; gap:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B2D8E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><div><div style="font-size:20px; font-weight:600; color:#fff;">Quarterly pen-test</div><div style="font-size:14px; color:#A8A8B3;">External · CREST-credentialed</div></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span class="powered">Powered by <strong>AIHUBZ AI Concierge</strong></span>
+      <div class="right">
+        <span class="live-dot"></span><span>live</span>
+        <span class="page">09 / 12</span>
+      </div>
+    </div>
+    <span class="aihubz-pill">Built by AIHUBZ</span>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 10 — ROLLOUT (Y1–Y3 timeline)
+       ============================================================ -->
+  <section data-screen-label="10 Rollout">
+    <div class="slide-brandbar">
+      <span class="slide-wordmark">BURJUMAN</span>
+      <span class="divider"></span>
+      <span class="co">Mawarid Holding</span>
+      <span class="title">Rollout</span>
+      <span class="meta">Y1–Y3 engagement arc</span>
+    </div>
+
+    <div class="slide-body" style="top:80px; padding:96px 96px 64px;">
+      <div class="eyebrow" style="margin-bottom:24px;">Rollout · 3-year engagement arc</div>
+      <h2 style="margin:0 0 64px; font-size:64px; font-weight:600; letter-spacing:-0.02em; line-height:1.05;">From dashboard to concierge,<br/>in three deliberate phases.</h2>
+
+      <div style="position:relative; padding:0 0 0 12px;">
+        <!-- timeline rail -->
+        <div style="position:absolute; left:32px; top:24px; bottom:24px; width:3px; background: linear-gradient(180deg,#FF6B47 0%,#C7256D 50%,#8B2D8E 100%); border-radius:3px;"></div>
+
+        <div style="display:flex; flex-direction:column; gap:36px;">
+          <div style="display:flex; gap:36px; align-items:flex-start;">
+            <div style="width:52px; height:52px; border-radius:50%; background:#FF6B47; display:flex; align-items:center; justify-content:center; color:#fff; font:600 16px var(--bj-font-mono); flex-shrink:0; box-shadow:0 0 0 6px rgba(255,107,71,0.18);">Y1</div>
+            <div style="flex:1; background:#0E0E10; border-radius:14px; box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06); padding:28px 36px;">
+              <h3 style="margin:0; font-size:28px; font-weight:600; line-height:1.2;">Command Center, live</h3>
+              <p style="margin:8px 0 0; font-size:17px; line-height:1.5; color:#A8A8B3;">Story + Explore modes deployed. 26-KPI taxonomy wired to live tenant feeds. Weekly QBR exports. AI Narrator strip in production.</p>
+            </div>
+            <div style="width:280px; display:flex; flex-direction:column; gap:6px;"><span class="eyebrow">Outcome</span><span style="font-size:24px; font-weight:600; color:#fff;">Single pane of glass</span></div>
+          </div>
+
+          <div style="display:flex; gap:36px; align-items:flex-start;">
+            <div style="width:52px; height:52px; border-radius:50%; background:#C7256D; display:flex; align-items:center; justify-content:center; color:#fff; font:600 16px var(--bj-font-mono); flex-shrink:0; box-shadow:0 0 0 6px rgba(199,37,109,0.18);">Y2</div>
+            <div style="flex:1; background:#0E0E10; border-radius:14px; box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06); padding:28px 36px;">
+              <h3 style="margin:0; font-size:28px; font-weight:600; line-height:1.2;">Next Best Action engine</h3>
+              <p style="margin:8px 0 0; font-size:17px; line-height:1.5; color:#A8A8B3;">Driver attribution → activate-able recommendations. Per-tenant portals. Confidence + payback projections on every NBA.</p>
+            </div>
+            <div style="width:280px; display:flex; flex-direction:column; gap:6px;"><span class="eyebrow">Outcome</span><span style="font-size:24px; font-weight:600; color:#fff;">Decisions in 1 click</span></div>
+          </div>
+
+          <div style="display:flex; gap:36px; align-items:flex-start;">
+            <div style="width:52px; height:52px; border-radius:50%; background:#8B2D8E; display:flex; align-items:center; justify-content:center; color:#fff; font:600 16px var(--bj-font-mono); flex-shrink:0; box-shadow:0 0 0 6px rgba(139,45,142,0.18);">Y3</div>
+            <div style="flex:1; background:#0E0E10; border-radius:14px; box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06); padding:28px 36px;">
+              <h3 style="margin:0; font-size:28px; font-weight:600; line-height:1.2;">AURA Concierge · consumer surface</h3>
+              <p style="margin:8px 0 0; font-size:17px; line-height:1.5; color:#A8A8B3;">BurJuman.com shopping assistant for B Hub members. Same model, same data, same brand — turned outward.</p>
+            </div>
+            <div style="width:280px; display:flex; flex-direction:column; gap:6px;"><span class="eyebrow">Outcome</span><span style="font-size:24px; font-weight:600; color:#fff;">Member-level lift</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span class="powered">Powered by <strong>AIHUBZ AI Concierge</strong></span>
+      <div class="right">
+        <span class="live-dot"></span><span>live</span>
+        <span class="page">10 / 12</span>
+      </div>
+    </div>
+    <span class="aihubz-pill">Built by AIHUBZ</span>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 11 — COMMERCIAL TERMS
+       ============================================================ -->
+  <section data-screen-label="11 Commercial">
+    <div class="slide-brandbar">
+      <span class="slide-wordmark">BURJUMAN</span>
+      <span class="divider"></span>
+      <span class="co">Mawarid Holding</span>
+      <span class="title">Commercial terms</span>
+      <span class="meta">3-year engagement</span>
+    </div>
+
+    <div class="slide-body" style="top:80px; padding:96px 96px 64px;">
+      <div class="eyebrow" style="margin-bottom:24px;">Scope · headcount · SLAs</div>
+      <h2 style="margin:0 0 56px; font-size:64px; font-weight:600; letter-spacing:-0.02em; line-height:1.05;">Three packages,<br/>one delivery team.</h2>
+
+      <div style="flex:1; display:grid; grid-template-columns:repeat(3, 1fr); gap:28px;">
+
+        <!-- Package: Command Center -->
+        <div class="slide-card" style="padding:36px 40px; gap:24px;">
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <span class="kicker" style="color:#FF6B47;">Y1 · Command Center</span>
+            <div style="display:flex; align-items:baseline; gap:10px;">
+              <span style="font-size:64px; font-weight:600; color:#fff; letter-spacing:-0.02em; line-height:1; font-variant-numeric:tabular-nums;">AED 1.8M</span>
+              <span style="font-size:18px; color:#A8A8B3;">/ year</span>
+            </div>
+          </div>
+          <div style="height:1px; background:#26262C;"></div>
+          <ul style="margin:0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:12px;">
+            <li style="display:flex; gap:10px; font-size:16px; color:#fff;"><span style="color:#FF6B47;">→</span> Story + Explore modes</li>
+            <li style="display:flex; gap:10px; font-size:16px; color:#fff;"><span style="color:#FF6B47;">→</span> 26-KPI fabric · live feeds</li>
+            <li style="display:flex; gap:10px; font-size:16px; color:#fff;"><span style="color:#FF6B47;">→</span> Weekly QBR exports</li>
+            <li style="display:flex; gap:10px; font-size:16px; color:#fff;"><span style="color:#FF6B47;">→</span> 5 named seats included</li>
+            <li style="display:flex; gap:10px; font-size:16px; color:#A8A8B3;"><span style="color:#FF6B47;">→</span> Additional seats AED 18K/yr</li>
+          </ul>
+        </div>
+
+        <!-- Package: NBA + tenant portals -->
+        <div class="slide-card" style="padding:36px 40px; gap:24px; box-shadow:inset 0 0 0 1px rgba(199,37,109,0.55), 0 16px 48px rgba(199,37,109,0.10);">
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span class="kicker" style="color:#C7256D;">Y2 · NBA engine + portals</span>
+              <span style="font-size:10px; letter-spacing:0.18em; text-transform:uppercase; background:rgba(199,37,109,0.16); color:#C7256D; padding:4px 10px; border-radius:999px; font-weight:500;">Recommended</span>
+            </div>
+            <div style="display:flex; align-items:baseline; gap:10px;">
+              <span style="font-size:64px; font-weight:600; color:#fff; letter-spacing:-0.02em; line-height:1; font-variant-numeric:tabular-nums;">AED 2.6M</span>
+              <span style="font-size:18px; color:#A8A8B3;">/ year</span>
+            </div>
+          </div>
+          <div style="height:1px; background:#26262C;"></div>
+          <ul style="margin:0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:12px;">
+            <li style="display:flex; gap:10px; font-size:16px; color:#fff;"><span style="color:#C7256D;">→</span> Everything in Y1</li>
+            <li style="display:flex; gap:10px; font-size:16px; color:#fff;"><span style="color:#C7256D;">→</span> NBA engine · Activate / Snooze</li>
+            <li style="display:flex; gap:10px; font-size:16px; color:#fff;"><span style="color:#C7256D;">→</span> Driver attribution model</li>
+            <li style="display:flex; gap:10px; font-size:16px; color:#fff;"><span style="color:#C7256D;">→</span> 142 tenant portals · SSO</li>
+            <li style="display:flex; gap:10px; font-size:16px; color:#fff;"><span style="color:#C7256D;">→</span> Unlimited seats</li>
+          </ul>
+        </div>
+
+        <!-- Package: AURA Concierge -->
+        <div class="slide-card" style="padding:36px 40px; gap:24px;">
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <span class="kicker" style="color:#8B2D8E;">Y3 · AURA Concierge</span>
+            <div style="display:flex; align-items:baseline; gap:10px;">
+              <span style="font-size:64px; font-weight:600; color:#fff; letter-spacing:-0.02em; line-height:1; font-variant-numeric:tabular-nums;">AED 3.4M</span>
+              <span style="font-size:18px; color:#A8A8B3;">/ year</span>
+            </div>
+          </div>
+          <div style="height:1px; background:#26262C;"></div>
+          <ul style="margin:0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:12px;">
+            <li style="display:flex; gap:10px; font-size:16px; color:#fff;"><span style="color:#8B2D8E;">→</span> Everything in Y2</li>
+            <li style="display:flex; gap:10px; font-size:16px; color:#fff;"><span style="color:#8B2D8E;">→</span> BurJuman.com chat surface</li>
+            <li style="display:flex; gap:10px; font-size:16px; color:#fff;"><span style="color:#8B2D8E;">→</span> Fitting / table / route holds</li>
+            <li style="display:flex; gap:10px; font-size:16px; color:#fff;"><span style="color:#8B2D8E;">→</span> B Hub member-level lift attribution</li>
+            <li style="display:flex; gap:10px; font-size:16px; color:#fff;"><span style="color:#8B2D8E;">→</span> 24/7 incident response</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:32px; display:grid; grid-template-columns:repeat(4, 1fr); gap:24px;">
+        <div style="display:flex; flex-direction:column; gap:6px;"><span class="eyebrow">DELIVERY TEAM</span><span style="font-size:24px; font-weight:600; color:#fff;">Pod of 6 · UAE-based</span></div>
+        <div style="display:flex; flex-direction:column; gap:6px;"><span class="eyebrow">P1 SLA</span><span style="font-size:24px; font-weight:600; color:#fff;">15 min · 24/7</span></div>
+        <div style="display:flex; flex-direction:column; gap:6px;"><span class="eyebrow">UPTIME COMMITMENT</span><span style="font-size:24px; font-weight:600; color:#fff; font-variant-numeric:tabular-nums;">99.95%</span></div>
+        <div style="display:flex; flex-direction:column; gap:6px;"><span class="eyebrow">CONTRACT</span><span style="font-size:24px; font-weight:600; color:#fff;">3-year · annual exit</span></div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span class="powered">Powered by <strong>AIHUBZ AI Concierge</strong></span>
+      <div class="right">
+        <span class="live-dot"></span><span>live</span>
+        <span class="page">11 / 12</span>
+      </div>
+    </div>
+    <span class="aihubz-pill">Built by AIHUBZ</span>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 12 — CLOSING / NEXT STEPS
+       ============================================================ -->
+  <section data-screen-label="12 Next Steps">
+    <div style="position:absolute; inset:0; background:#000;"></div>
+    <div style="position:absolute; left:0; bottom:0; width:100%; height:8px; background: linear-gradient(90deg,#FF6B47 0%,#C7256D 50%,#8B2D8E 100%);"></div>
+
+    <div style="position:absolute; left:96px; top:96px; display:flex; align-items:center; gap:28px;">
+      <span class="slide-wordmark" style="font-size:24px;">BURJUMAN</span>
+      <span style="width:1px; height:28px; background:rgba(255,255,255,0.32);"></span>
+      <span style="font-size:14px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.86); font-weight:500;">Mawarid Holding · CTO review</span>
+    </div>
+
+    <div style="position:absolute; left:96px; right:96px; top:50%; transform:translateY(-50%); display:grid; grid-template-columns: 1.4fr 1fr; gap:80px; align-items:center;">
+      <div>
+        <div class="eyebrow" style="color:#A8A8B3; margin-bottom:32px;">Next steps</div>
+        <h2 style="margin:0; font-size:96px; font-weight:600; letter-spacing:-0.025em; line-height:1.0; color:#fff;">Let's put one screen<br/>between you and the mall.</h2>
+        <p style="margin:36px 0 0; font-family:var(--bj-font-narrator); font-style:italic; font-size:28px; line-height:1.35; color:#A8A8B3; max-width:1000px;">"Sign-off this week, kick-off Monday, live Story Mode in front of the Mawarid board for the July QBR."</p>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <div class="slide-card" style="padding:28px 32px; gap:8px;">
+          <span class="kicker" style="color:#FF6B47;">Step 1 · this week</span>
+          <span style="font-size:24px; font-weight:600; color:#fff; line-height:1.25;">Procurement sign-off · MSA + SOW</span>
+        </div>
+        <div class="slide-card" style="padding:28px 32px; gap:8px;">
+          <span class="kicker" style="color:#C7256D;">Step 2 · week 2</span>
+          <span style="font-size:24px; font-weight:600; color:#fff; line-height:1.25;">Data-source access · tenant-feed handshakes</span>
+        </div>
+        <div class="slide-card" style="padding:28px 32px; gap:8px;">
+          <span class="kicker" style="color:#8B2D8E;">Step 3 · week 6</span>
+          <span style="font-size:24px; font-weight:600; color:#fff; line-height:1.25;">Story Mode live · Mawarid board demo</span>
+        </div>
+        <div style="background:#0E0E10; border-radius:14px; box-shadow:inset 0 0 0 1px rgba(229,41,74,0.45), 0 16px 48px rgba(229,41,74,0.12); padding:28px 32px; display:flex; align-items:center; gap:18px;">
+          <div style="width:48px; height:48px; border-radius:14px; background:rgba(229,41,74,0.14); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E5294A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <div style="display:flex; flex-direction:column;">
+            <span class="kicker" style="color:#E5294A;">Activate</span>
+            <span style="font-size:18px; font-weight:500; color:#fff; line-height:1.3;">Reply with countersignature to proceed.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position:absolute; left:96px; bottom:128px; display:flex; align-items:center; gap:32px; font-size:15px; color:#A8A8B3;">
+      <div><span style="display:block; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#6E6E78; margin-bottom:4px;">AIHUBZ Engagement Lead</span><span style="color:#fff; font-weight:500;">Omar Al-Falasi</span> · omar@aihubz.ae</div>
+      <div style="width:1px; height:32px; background:#26262C;"></div>
+      <div><span style="display:block; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#6E6E78; margin-bottom:4px;">Account · Mawarid</span><span style="color:#fff; font-weight:500;">Reema Khalfan</span> · reema@aihubz.ae</div>
+    </div>
+
+    <span class="aihubz-pill">Built by AIHUBZ</span>
+  </section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+/* =====================================================================
+   BurJuman Command Center — Brand Canon
+   Built by AIHUBZ · Locked tokens, do not bleed across clients.
+   ===================================================================== */
+
+/* ---- Webfonts (Google Fonts substitutes — flagged in README) -------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Jost:wght@200;300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ===== SIGNATURE GRADIENT (the brand identity moment) ============= */
+  --bj-grad-stop-1: #FF6B47;   /* coral */
+  --bj-grad-stop-2: #C7256D;   /* magenta */
+  --bj-grad-stop-3: #8B2D8E;   /* purple */
+  --bj-gradient: linear-gradient(90deg, #FF6B47 0%, #C7256D 50%, #8B2D8E 100%);
+  --bj-gradient-vert: linear-gradient(180deg, #FF6B47 0%, #C7256D 50%, #8B2D8E 100%);
+  --bj-gradient-diag: linear-gradient(135deg, #FF6B47 0%, #C7256D 50%, #8B2D8E 100%);
+
+  /* ===== SURFACES (dark-mode canonical) ============================= */
+  --bj-surface-body:     #000000;   /* pure black — canonical body */
+  --bj-surface-card:     #0E0E10;   /* slightly elevated card */
+  --bj-surface-elevated: #15151A;   /* modal / sheet */
+  --bj-surface-narrator: #0E0E10;   /* AI narrator strip */
+
+  /* ===== CTA / ACCENT =============================================== */
+  --bj-cta:        #E5294A;   /* coral-red — Activate / Book */
+  --bj-cta-hover:  #FF3B5C;   /* opacity-up; no scale transform */
+  --bj-cta-press:  #C71F3D;
+
+  /* ===== TEXT ======================================================= */
+  --bj-text:        #FFFFFF;
+  --bj-text-muted:  #A8A8B3;
+  --bj-text-dim:    #6E6E78;
+  --bj-text-on-grad:#FFFFFF;
+
+  /* ===== HAIRLINES / BORDERS ======================================== */
+  --bj-hairline:        #26262C;   /* 0.75pt — primary separator */
+  --bj-hairline-strong: #34343C;
+  --bj-border-card:     rgba(255,255,255,0.06);
+
+  /* ===== SEMANTIC (driver source-color tags) ======================== */
+  --bj-driver-campaign: #FF6B47;   /* coral */
+  --bj-driver-footfall: #C7256D;   /* magenta */
+  --bj-driver-crm:      #8B2D8E;   /* purple */
+  --bj-driver-digital:  #E5294A;
+  --bj-driver-ops:      #A8A8B3;
+
+  /* ===== STATUS ===================================================== */
+  --bj-positive: #2EE6A0;          /* delta-chip up (used sparingly) */
+  --bj-negative: #FF4D6A;          /* delta-chip down */
+  --bj-live-dot: #2EE6A0;          /* footer live-status pulse */
+
+  /* ===== AIHUBZ DELIVERY ATTRIBUTION =============================== */
+  --aihubz-pill-bg:   #1A1A1A;
+  --aihubz-pill-text: #F5F5F5;
+
+  /* ===== TYPOGRAPHY ================================================ */
+  --bj-font-wordmark: 'Jost', 'Avenir Next', 'Futura', sans-serif;   /* light geometric sans */
+  --bj-font-ui:       'Inter', 'Helvetica Neue', system-ui, sans-serif;
+  --bj-font-narrator: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --bj-font-mono:     'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  /* Type scale ------------------------------------------------------- */
+  --bj-type-hero:        72px;   /* the ONE hero number on Story Mode */
+  --bj-type-hero-xl:     112px;  /* alt scale for title slide */
+  --bj-type-display:     48px;
+  --bj-type-h1:          32px;
+  --bj-type-h2:          24px;
+  --bj-type-h3:          18px;
+  --bj-type-body:        14px;
+  --bj-type-small:       12px;
+  --bj-type-xs:          11px;   /* attribution pill */
+  --bj-type-narrator:    16px;   /* Fraunces italic strip */
+
+  --bj-leading-tight:   1.05;
+  --bj-leading-snug:    1.2;
+  --bj-leading-body:    1.5;
+
+  --bj-tracking-wordmark: 0.25em;
+  --bj-tracking-eyebrow:  0.18em;
+  --bj-tracking-ui:       0;
+  --bj-tracking-tight:   -0.02em;
+
+  /* ===== SPACING (4-step base) ===================================== */
+  --bj-space-1:   4px;
+  --bj-space-2:   8px;
+  --bj-space-3:   12px;
+  --bj-space-4:   16px;
+  --bj-space-5:   20px;
+  --bj-space-6:   24px;   /* AIHUBZ pill inset, card gutter */
+  --bj-space-8:   32px;
+  --bj-space-10:  40px;
+  --bj-space-12:  48px;
+  --bj-space-16:  64px;
+  --bj-space-20:  80px;   /* brand bar height */
+
+  /* ===== LAYOUT CONSTANTS ========================================== */
+  --bj-brandbar-h:  80px;
+  --bj-narrator-h:  64px;
+  --bj-footer-h:    56px;
+
+  /* ===== RADII (sparing — institutional, not playful) ============== */
+  --bj-radius-card:   12px;
+  --bj-radius-tile:   16px;
+  --bj-radius-pill:   999px;
+  --bj-radius-chip:   6px;
+  --bj-radius-hex:    8px;   /* hex/honeycomb corner soften */
+
+  /* ===== SHADOWS / ELEVATION ======================================= */
+  --bj-shadow-card:   0 1px 0 rgba(255,255,255,0.03) inset, 0 0 0 1px var(--bj-border-card);
+  --bj-shadow-modal:  0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--bj-hairline);
+  --bj-glow-cta:      0 0 0 1px rgba(229,41,74,0.4), 0 8px 24px rgba(229,41,74,0.25);
+  --bj-glow-grad:     0 12px 60px rgba(199,37,109,0.25);
+
+  /* ===== MOTION (subtle — no scale, no bounce) ===================== */
+  --bj-ease:        cubic-bezier(0.2, 0.6, 0.2, 1);
+  --bj-dur-fast:    120ms;
+  --bj-dur-base:    220ms;
+  --bj-dur-slow:    420ms;
+}
+
+/* =====================================================================
+   SEMANTIC ELEMENT STYLES
+   ===================================================================== */
+
+html, body {
+  background: var(--bj-surface-body);
+  color: var(--bj-text);
+  font-family: var(--bj-font-ui);
+  font-size: var(--bj-type-body);
+  line-height: var(--bj-leading-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bj-wordmark {
+  font-family: var(--bj-font-wordmark);
+  font-weight: 300;
+  letter-spacing: var(--bj-tracking-wordmark);
+  text-transform: uppercase;
+  color: var(--bj-text);
+}
+
+.bj-eyebrow {
+  font-family: var(--bj-font-ui);
+  font-weight: 500;
+  font-size: var(--bj-type-xs);
+  letter-spacing: var(--bj-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--bj-text-muted);
+}
+
+.bj-hero-number {
+  font-family: var(--bj-font-ui);
+  font-weight: 600;
+  font-size: var(--bj-type-hero);
+  line-height: var(--bj-leading-tight);
+  letter-spacing: var(--bj-tracking-tight);
+  color: var(--bj-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.bj-display {
+  font-family: var(--bj-font-ui);
+  font-weight: 600;
+  font-size: var(--bj-type-display);
+  line-height: var(--bj-leading-tight);
+  letter-spacing: var(--bj-tracking-tight);
+}
+
+h1, .bj-h1 {
+  font-family: var(--bj-font-ui);
+  font-weight: 600;
+  font-size: var(--bj-type-h1);
+  line-height: var(--bj-leading-snug);
+  letter-spacing: var(--bj-tracking-tight);
+  margin: 0;
+}
+
+h2, .bj-h2 {
+  font-family: var(--bj-font-ui);
+  font-weight: 600;
+  font-size: var(--bj-type-h2);
+  line-height: var(--bj-leading-snug);
+  margin: 0;
+}
+
+h3, .bj-h3 {
+  font-family: var(--bj-font-ui);
+  font-weight: 500;
+  font-size: var(--bj-type-h3);
+  line-height: var(--bj-leading-snug);
+  margin: 0;
+}
+
+p, .bj-body {
+  font-family: var(--bj-font-ui);
+  font-weight: 400;
+  font-size: var(--bj-type-body);
+  line-height: var(--bj-leading-body);
+  color: var(--bj-text-muted);
+  margin: 0;
+}
+
+.bj-narrator {
+  font-family: var(--bj-font-narrator);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--bj-type-narrator);
+  line-height: var(--bj-leading-snug);
+  color: var(--bj-text);
+}
+
+code, .bj-code {
+  font-family: var(--bj-font-mono);
+  font-size: var(--bj-type-small);
+  color: var(--bj-text);
+}
+
+/* ===== Reusable utility surfaces ==================================== */
+
+.bj-card {
+  background: var(--bj-surface-card);
+  border-radius: var(--bj-radius-card);
+  box-shadow: var(--bj-shadow-card);
+}
+
+.bj-card-elevated {
+  background: var(--bj-surface-elevated);
+  border-radius: var(--bj-radius-card);
+  box-shadow: var(--bj-shadow-card);
+}
+
+.bj-hairline {
+  border: 0;
+  border-top: 1px solid var(--bj-hairline);
+}
+
+.bj-gradient-bar {
+  background: var(--bj-gradient);
+}

@@ -1,0 +1,59 @@
+/* Shared base for all preview cards. Imported by every preview/*.html. */
+@import url('../colors_and_type.css');
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bj-surface-body);
+  color: var(--bj-text);
+  font-family: var(--bj-font-ui);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+.card {
+  width: 700px;
+  padding: 28px 32px;
+  background: var(--bj-surface-body);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.card.tight   { padding: 24px 28px; gap: 14px; }
+.card.cosy    { padding: 32px 36px; gap: 22px; }
+
+.row { display: flex; align-items: center; gap: 12px; }
+.col { display: flex; flex-direction: column; gap: 6px; }
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bj-text-muted);
+  font-weight: 500;
+}
+
+.label  { font-size: 12px; color: var(--bj-text-muted); }
+.mono   { font-family: var(--bj-font-mono); font-size: 11px; color: var(--bj-text-muted); }
+
+.swatch {
+  border-radius: 10px;
+  border: 1px solid var(--bj-hairline);
+  height: 64px;
+  display: flex;
+  align-items: flex-end;
+  padding: 8px 10px;
+}
+.swatch .hex {
+  font-family: var(--bj-font-mono);
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.85);
+  background: rgba(0,0,0,0.45);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.swatch.on-light .hex { color: #0E0E10; background: rgba(255,255,255,0.7); }
+
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
